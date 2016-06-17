@@ -18,4 +18,12 @@ class Room
     return @songs.count
   end
 
+  def add_song_to_room(song)
+    return @songs << song
+  end
+
+  def add_guest_to_room(guest)
+    return @guests << guest
+  end
+
 end
