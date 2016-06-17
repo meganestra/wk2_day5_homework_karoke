@@ -30,4 +30,8 @@ class Room
     return @guests.concat(guests)
   end
 
+  def add_multiple_songs_to_room(songs)
+    return @songs.concat(songs)
+  end
+
 end

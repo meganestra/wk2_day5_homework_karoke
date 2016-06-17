@@ -11,11 +11,11 @@ class RoomTest < MiniTest::Test
     @guest_3 = Guest.new("Nat")
 
     @song_1 = Song.new("LemmeTellYa", "Kidaf") 
-    # @song_2 = Song.new("Controlla", "Drake") 
-    # @song_3 = Song.new("Baby Blue", "Action Bronson") 
+    @song_2 = Song.new("Controlla", "Drake") 
+    @song_3 = Song.new("Baby Blue", "Action Bronson") 
 
     @guests = [@guest_1, @guest_2, @guest_3]
-    # @songs = [@song_1, @song_2, @song_3]
+    @songs = [@song_1, @song_2, @song_3]
 
     @room_1 = Room.new("Room 1", 5)
   end
@@ -49,6 +49,11 @@ class RoomTest < MiniTest::Test
   def test_if_room_has_three_guests
     @room_1.add_multiple_guests_to_room(@guests)
     assert_equal(3, @room_1.guests_in_room)
+  end
+
+  def test_if_room_has_three_songs
+    @room_1.add_multiple_songs_to_room(@songs)
+    assert_equal(3, @room_1.songs_in_room)
   end
 
 end
