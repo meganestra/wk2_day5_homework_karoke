@@ -58,7 +58,12 @@ class RoomTest < MiniTest::Test
 
   def test_if_room_is_full_to_capacity
     @room_1.add_multiple_guests_to_room(@guests)
-    assert_equal("Room 1 is not full. There are 2 spaces available.", @room_1.check_room_capacity)
+    assert_equal("Room 1 is not full. There are 2 spaces available.", @room_1.check_available_room_capacity)
+  end
+
+  def test_if_room_has_capacity_for_guest_group
+    @room_1.add_multiple_guests_to_room(@guests)
+    assert_equal(true, @room_1.check_room_capacity(@guests))
   end
 
 end

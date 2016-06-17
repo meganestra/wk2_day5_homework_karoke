@@ -34,7 +34,11 @@ class Room
     return @songs.concat(songs)
   end
 
-  def check_room_capacity
+  def check_room_capacity(guests)
+    return guests.count <= @capacity
+  end
+
+  def check_available_room_capacity
     if guests_in_room < @capacity
       available_space = @capacity - guests_in_room
       return "#{name} is not full. There are #{available_space} spaces available."
@@ -42,6 +46,8 @@ class Room
       return "Sorry, #{name} is full"
     end
   end
+
+
 
 
 end
