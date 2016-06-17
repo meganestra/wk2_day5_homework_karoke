@@ -12,4 +12,14 @@ class KarokeBar
     return @rooms.count
   end
 
+  def number_of_songs()
+    return @songs.count
+  end
+
+  def number_of_guests()
+    return @guests.count
+  end
+
+
+
 end

@@ -27,6 +27,13 @@ class KarokeBarTest < MiniTest::Test
     assert_equal(2, @karoke_bar.number_of_rooms)
   end
 
+  def test_number_of_songs_in_karoke_bar
+    assert_equal(2, @karoke_bar.number_of_songs)
+  end
+
+  def test_number_of_guests_in_karoke_bar
+    assert_equal(2, @karoke_bar.number_of_guests)
+  end
 
 
 end
