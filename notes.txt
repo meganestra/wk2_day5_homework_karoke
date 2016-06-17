@@ -1,0 +1,12 @@
+What happens if there are more guests trying to be checked in than there is free space in the room?
+
+If you have one guest to be checked in:
+  - Check if the current number of guests in room is below the room capacity to calculate the available spaces
+  - If there is 1 or more available spaces
+  - Add the guest to the room
+
+If you have a guest group to be checked in:
+  - Check if the group is bigger than the room capacity
+  - Check if the current number of guests in the room is below the room capacity to calculate the available spaces
+  - If the number of the guests in the guest group is equal to or less than the available spaces
+  - Add the guest group to the room

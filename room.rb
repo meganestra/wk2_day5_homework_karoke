@@ -31,26 +31,31 @@ class Room
   end
 
   def add_multiple_guests_to_room(guests)
-    if check_room_capacity(guests) == true
-      return @guests.concat(guests)
-    else
-      return "Sorry, #{name} only holds #{capacity} guests, and you have #{guests.count} in your party."
-    end
+    return @guests.concat(guests) if check_room_capacity(guests) == true
   end
 
   def add_multiple_songs_to_room(songs)
     return @songs.concat(songs)
   end
 
-  def check_available_room_capacity
-    if guests_in_room < @capacity
-      available_space = @capacity - guests_in_room
-      return "#{name} is not full. There are #{available_space} spaces available."
-    elsif guests_in_room == @capacity
-      return "Sorry, #{name} is full"
-    end
-  end
+  # def check_available_room_capacity
+  #   if guests_in_room < @capacity
+  #     available_space = @capacity - guests_in_room
+  #     return "#{name} is not full. There are #{available_space} spaces available."
+  #   elsif guests_in_room == @capacity
+  #     return "Sorry, #{name} is full"
+  #   end
+  # end
 
+  # def remaining_room_capacity
+  #   available_space = @capacity - guests_in_room
+  #   return available_space
+  # end
+
+  def available_spaces_in_room(guests)
+    available_spaces = @capacity - guests_in_room
+    return available_spaces
+  end
 
 
 
