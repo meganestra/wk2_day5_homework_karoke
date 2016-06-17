@@ -24,15 +24,15 @@ class Room
   end
 
   def add_guest_to_room(guest)
-    return @guests << guest
+    return @guests << guest if (available_spaces_in_room >= 1)
   end
 
-  def check_room_capacity(guests)
+  def check_guest_party_against_capacity(guests)
     return guests.count <= @capacity
   end
 
   def add_multiple_guests_to_room(guests)
-    return @guests.concat(guests) if check_room_capacity(guests) == true
+    return @guests.concat(guests) if (check_guest_party_against_capacity(guests) == true) && (available_spaces_in_room >= guests.count)
   end
 
   def add_song_to_room(song)
@@ -42,24 +42,6 @@ class Room
   def add_multiple_songs_to_room(songs)
     return @songs.concat(songs)
   end
-
-  # def check_available_room_capacity
-  #   if guests_in_room < @capacity
-  #     available_space = @capacity - guests_in_room
-  #     return "#{name} is not full. There are #{available_space} spaces available."
-  #   elsif guests_in_room == @capacity
-  #     return "Sorry, #{name} is full"
-  #   end
-  # end
-
-  # def remaining_room_capacity
-  #   available_space = @capacity - guests_in_room
-  #   return available_space
-  # end
-
-
-
-
 
 
 end
