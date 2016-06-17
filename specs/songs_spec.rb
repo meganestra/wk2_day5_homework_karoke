@@ -19,4 +19,9 @@ class SongsTest < MiniTest::Test
     assert_equal(2, @songs.number_of_songs)
   end
 
+  def test_songs_collection_can_remove_song
+    @songs.remove_song
+    assert_equal(1, @songs.number_of_songs)
+  end
+
 end

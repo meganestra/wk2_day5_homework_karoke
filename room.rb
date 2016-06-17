@@ -6,11 +6,16 @@ class Room
   def initialize(name, capacity)
     @name = name
     @capacity = capacity
-    @status = []
+    @guests = []
+    @songs = []
   end
 
   def guests_in_room()
-    return @status.count
+    return @guests.count
+  end
+
+  def songs_in_room()
+    return @songs.count
   end
 
 end

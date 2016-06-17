@@ -15,5 +15,4 @@ class SongTest < MiniTest::Test
     assert_equal("Kidaf", @song_1.artist_name)
   end
 
-
 end

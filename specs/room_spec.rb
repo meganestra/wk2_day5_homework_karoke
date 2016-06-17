@@ -19,4 +19,8 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room_1.guests_in_room)
   end
 
+  def test_if_room_has_no_songs
+    assert_equal(0, @room_1.songs_in_room)
+  end
+
 end

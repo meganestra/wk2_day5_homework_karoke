@@ -8,4 +8,8 @@ class Songs
     return @songs.count
   end
 
+  def remove_song
+    return @songs.pop
+  end
+
 end
