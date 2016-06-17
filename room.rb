@@ -1,13 +1,15 @@
 class Room
 
-  attr_reader(:name, :capacity)
-  attr_accessor(:status)
+  attr_reader(:name, :capacity, :fee)
+  attr_accessor(:status, :cash)
 
-  def initialize(name, capacity)
+  def initialize(name, capacity, fee)
     @name = name
     @capacity = capacity
+    @fee = 10
     @guests = []
     @songs = []
+    @cash = 0
   end
 
   def guests_in_room()
@@ -43,6 +45,16 @@ class Room
     return @songs.concat(songs)
   end
 
+  def check_if_guest_can_afford_fee(guest)
+    return guest.money > @fee
+  end
+
+  def check_if_guest_party_can_afford_fee(guests)
+    #iterate over guests array and sum their money
+    #if sum of their money is greater than or equal to number of guests in party * fee then can afford
+
+
+  end
 
 end
 
