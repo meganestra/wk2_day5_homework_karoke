@@ -5,9 +5,6 @@ class GuestTest < MiniTest::Test
 
   def setup
     @guest_1 = Guest.new("Megan")
-
-    #@guests = [@guest_1]
-
   end
 
   def test_guest_has_name

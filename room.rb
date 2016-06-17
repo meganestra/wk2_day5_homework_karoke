@@ -26,4 +26,8 @@ class Room
     return @guests << guest
   end
 
+  def add_multiple_guests_to_room(guests)
+    return @guests.concat(guests)
+  end
+
 end
