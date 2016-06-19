@@ -97,27 +97,15 @@ class Room
     return total
   end
 
-  # def guest_party_can_afford_fee(guests)
-  #   money = 0
-  #   # count = 0
-  #   # limit = guests.count
+  def guest_party_can_afford_fee(guests)
+    return total_guest_party_money(guests) > (calculate_group_fee_per_person(guests) * guests.count)
+  end
 
-  #   # while (count < limit)
-  #     for guest in guests
-  #       # return count += 1
-  #      return guest.money
-  #      money += guest.money
-  #     end
-  #   # end
 
-  #   return money
 
-  #   # fee = calculate_group_fee(guests)
-  #   # if money >= guests.count * fee
-  #   #   return true
-  #   # end
 
-  # end
+
+
 
   # def guest_party_has_made_payment(guests)
   #   fee = calculate_group_fee(guests)

@@ -108,10 +108,9 @@ class RoomTest < MiniTest::Test
     assert_equal(60, @room_1.total_guest_party_money(@guest_party_2))
   end
 
-  # def test_if_group_can_afford_fee
-  #   @room_1.add_multiple_guests_to_room(@guest_party_2)
-  #   assert_equal(true, @room_1.guest_party_can_afford_fee(@guest_party_2))
-  # end
+  def test_if_group_can_afford_fee
+    assert_equal(true, @room_1.guest_party_can_afford_fee(@guest_party_2))
+  end
 
 
   # def test_if_group_has_made_payment
