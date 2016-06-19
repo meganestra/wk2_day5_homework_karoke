@@ -127,7 +127,9 @@ class Room
     end
   end
 
-
+  def add_beer_to_cash
+    return @cash += @bar[:beer]
+  end
 
 end
 

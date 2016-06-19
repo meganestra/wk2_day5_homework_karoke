@@ -6,25 +6,29 @@ require_relative('../guest')
 class RoomTest < MiniTest::Test
 
   def setup
-    @guest_1 = Guest.new("Megan", 20)
-    @guest_2 = Guest.new("Jess", 10)
-    @guest_3 = Guest.new("Nat", 30)
+    @guest_1 = Guest.new("Megan", 20, "Controlla", "Drake")
+    @guest_2 = Guest.new("Jess", 10, "Work", "Rihanna")
+    @guest_3 = Guest.new("Nat", 30, "Hello", "Adele")
 
-    @guest_4 = Guest.new("Marie", 5)
-    @guest_5 = Guest.new("Ashleigh", 10)
-    @guest_6 = Guest.new("Val", 5)
-    @guest_7 = Guest.new("Zsolt", 20)
-    @guest_8 = Guest.new("Jay", 20)
+    @guest_4 = Guest.new("Marie", 5, "Baby blue", "Action Bronson")
+    @guest_5 = Guest.new("Ashleigh", 10, "I walk the line", "Johnny Cash")
+    @guest_6 = Guest.new("Val", 5, "Hot stuff", "Bad Girls")
+    @guest_7 = Guest.new("Zsolt", 20, "All shook up", "Elvis")
+    @guest_8 = Guest.new("Jay", 20, "Wonderwall", "Oasis")
 
     @song_1 = Song.new("LemmeTellYa", "Kidaf") 
     @song_2 = Song.new("Controlla", "Drake") 
-    @song_3 = Song.new("Baby Blue", "Action Bronson") 
+    @song_3 = Song.new("I walk the line", "Johnny Cash") 
+    @song_4 = Song.new("All shook up", "Elvis") 
+    @song_5 = Song.new("These boots are made for walkin", "Nancy Sinatra") 
+    @song_6 = Song.new("Hello", "Adele") 
 
     @guest_party_1 = [@guest_1, @guest_2, @guest_3]
     @guest_party_2 = [@guest_4, @guest_5, @guest_6, @guest_7, @guest_8]
-    @songs = [@song_1, @song_2, @song_3]
+    @songs = [@song_1, @song_2, @song_3, @song_4, @song_5, @song_6]
 
     @room_1 = Room.new("Room 1", 5, 10)
+    @room_2 = Room.new("Room 2", 10, 10)
   end
 
   def test_room_has_name
@@ -58,9 +62,9 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room_1.guests_in_room)
   end
 
-  def test_if_room_has_three_songs
+  def test_if_room_has_six_songs
     @room_1.add_multiple_songs_to_room(@songs)
-    assert_equal(3, @room_1.songs_in_room)
+    assert_equal(6, @room_1.songs_in_room)
   end
 
   def test_available_spaces_in_room
@@ -140,6 +144,10 @@ class RoomTest < MiniTest::Test
     assert_equal(7, @guest_1.money)
   end
 
+  def test_if_bar_receives_payment_for_beer
+    @room_1.add_beer_to_cash
+    assert_equal(3, @room_1.cash)
+  end
 
 end
 
