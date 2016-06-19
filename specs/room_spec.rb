@@ -73,14 +73,6 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room_1.available_spaces_in_room)
   end
 
-  def test_guest_can_afford_fee
-    assert_equal(true, @room_1.check_if_guest_can_afford_fee(@guest_1))
-  end
-
-  def test_guest_can_not_afford_fee
-    assert_equal(false, @room_1.check_if_guest_can_afford_fee(@guest_4))
-  end
-
   def test_remove_guest_from_room
     @room_1.add_multiple_guests_to_room(@guest_party_2)
     @room_1.remove_guest_from_room
@@ -106,6 +98,26 @@ class RoomTest < MiniTest::Test
     @room_1.add_guest_to_room(@guest_1)
     assert_equal(10, @room_1.individual_guest_make_payment(@guest_1))
   end
+
+  def test_calculate_group_fee_per_person
+    @room_1.add_multiple_guests_to_room(@guest_party_2)
+    assert_equal(7, @room_1.calculate_group_fee_per_person(@guest_party_2))
+  end
+
+  def test_total_group_fee
+    assert_equal(60, @room_1.total_guest_party_money(@guest_party_2))
+  end
+
+  # def test_if_group_can_afford_fee
+  #   @room_1.add_multiple_guests_to_room(@guest_party_2)
+  #   assert_equal(true, @room_1.guest_party_can_afford_fee(@guest_party_2))
+  # end
+
+
+  # def test_if_group_has_made_payment
+  #   @room_1.add_multiple_guests_to_room(@guest_party_2)
+  #   assert_equal(35, @room_1.cash.guest_party_has_made_payment(@guest_party_2))
+  # end
 
 end
 

@@ -2,13 +2,14 @@ require('pry')
 
 class Room
 
-  attr_reader(:name, :capacity, :fee)
+  attr_reader(:name, :capacity, :individual_fee)
   attr_accessor(:status, :cash)
 
-  def initialize(name, capacity, fee)
+  def initialize(name, capacity, individual_fee)
     @name = name
     @capacity = capacity
-    @fee = 10
+    @individual_fee = 10
+    @group_fee = 7
     @guests = []
     @songs = []
     @cash = 0
@@ -47,8 +48,8 @@ class Room
     return @songs.concat(songs)
   end
 
-  def check_if_guest_can_afford_fee(guest)
-    return guest.money > @fee
+  def check_if_guest_can_afford_individual_fee(guest)
+    return guest.money > @individual_fee
   end
 
   def remove_guest_from_room
@@ -72,12 +73,58 @@ class Room
   # end
 
   def individual_guest_can_afford_fee(guest)
-    return guest.money > @fee
+    return guest.money > @individual_fee
   end
 
   def individual_guest_make_payment(guest)
-    return @cash += @fee if individual_guest_can_afford_fee(guest) == true
+    return @cash += @individual_fee if individual_guest_can_afford_fee(guest) == true
   end
+
+  def calculate_group_fee_per_person(guests)
+    if guests.count >= 3
+      fee_per_person = @group_fee
+    else
+      fee_per_person = @individual_fee
+    end
+    return fee_per_person
+  end
+
+  def total_guest_party_money(guests)
+    total = 0
+    for guest in guests
+      total += guest.money
+    end
+    return total
+  end
+
+  # def guest_party_can_afford_fee(guests)
+  #   money = 0
+  #   # count = 0
+  #   # limit = guests.count
+
+  #   # while (count < limit)
+  #     for guest in guests
+  #       # return count += 1
+  #      return guest.money
+  #      money += guest.money
+  #     end
+  #   # end
+
+  #   return money
+
+  #   # fee = calculate_group_fee(guests)
+  #   # if money >= guests.count * fee
+  #   #   return true
+  #   # end
+
+  # end
+
+  # def guest_party_has_made_payment(guests)
+  #   fee = calculate_group_fee(guests)
+  #   return @cash += fee if guest_party_can_afford_fee(guests)
+  # end
+
+
 
 end
 
