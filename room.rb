@@ -101,16 +101,10 @@ class Room
     return total_guest_party_money(guests) > (calculate_group_fee_per_person(guests) * guests.count)
   end
 
-
-
-
-
-
-
-  # def guest_party_has_made_payment(guests)
-  #   fee = calculate_group_fee(guests)
-  #   return @cash += fee if guest_party_can_afford_fee(guests)
-  # end
+  def guest_party_has_made_payment(guests)
+    total_fee = calculate_group_fee_per_person(guests) * guests.count
+    return @cash += total_fee
+  end
 
 
 
