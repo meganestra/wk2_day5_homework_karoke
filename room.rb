@@ -13,7 +13,7 @@ class Room
     @guests = []
     @songs = []
     @cash = 0
-    @bar = {beer: 3, wine: 5}
+    @bar = {beer: 3}
   end
 
   def guests_in_room()
@@ -114,6 +114,16 @@ class Room
   def deduct_fee_from_guest_party_money(guests)
     for guest in guests
       guest.money -= calculate_group_fee_per_person(guests)
+    end
+  end
+
+  def individual_guest_afford_from_bar(guest)
+    return guest.money >= @bar[:beer]
+  end
+
+  def deduct_beer_cost_from_individual_guest(guest)
+    if individual_guest_afford_from_bar(guest) == true
+      return guest.money -= @bar[:beer]
     end
   end
 
