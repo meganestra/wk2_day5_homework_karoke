@@ -99,6 +99,12 @@ class RoomTest < MiniTest::Test
     assert_equal(10, @room_1.individual_guest_make_payment(@guest_1))
   end
 
+  def test_if_individual_money_has_been_deducted_post_fee_payment
+    @room_1.add_guest_to_room(@guest_1)
+    @room_1.deduct_fee_from_individual_guest(@guest_1)
+    assert_equal(10, @guest_1.money)
+  end
+
   def test_calculate_group_fee_per_person
     @room_1.add_multiple_guests_to_room(@guest_party_2)
     assert_equal(7, @room_1.calculate_group_fee_per_person(@guest_party_2))

@@ -81,6 +81,10 @@ class Room
     return @cash += @individual_fee if individual_guest_can_afford_fee(guest) == true
   end
 
+  def deduct_fee_from_individual_guest(guest)
+    return guest.money -= @individual_fee
+  end
+
   def calculate_group_fee_per_person(guests)
     if guests.count >= 3
       fee_per_person = @group_fee
