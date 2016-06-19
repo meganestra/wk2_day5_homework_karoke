@@ -131,11 +131,15 @@ class Room
     return @cash += @bar[:beer]
   end
 
+  def guest_check_if_room_has_song(guest)
+    match = []
+    song_search = @songs.select { |song| song.song_title == guest.favourite_song_title }
+    match << song_search
+    return "Whooo" if (match.count == 1)
+  end
+
+
 end
-
-
-
-
 
 
 

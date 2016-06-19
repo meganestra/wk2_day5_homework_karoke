@@ -149,6 +149,13 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room_1.cash)
   end
 
+  def test_if_guest_can_check_if_room_has_favourite_song
+    @room_2.add_multiple_guests_to_room(@guest_party_2)
+    @room_2.add_multiple_songs_to_room(@songs)
+    assert_equal("Whooo", @room_2.guest_check_if_room_has_song(@guest_5))
+  end
+
+
 end
 
 
