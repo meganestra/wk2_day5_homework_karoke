@@ -2,7 +2,7 @@ require('pry')
 
 class Room
 
-  attr_reader(:name, :capacity, :individual_fee)
+  attr_reader(:name, :capacity, :individual_fee, :bar)
   attr_accessor(:status, :cash)
 
   def initialize(name, capacity, individual_fee)
@@ -13,6 +13,7 @@ class Room
     @guests = []
     @songs = []
     @cash = 0
+    @bar = {beer: 3, wine: 5}
   end
 
   def guests_in_room()
@@ -104,6 +105,12 @@ class Room
   def guest_party_has_made_payment(guests)
     total_fee = calculate_group_fee_per_person(guests) * guests.count
     return @cash += total_fee
+  end
+
+  def deduct_fee_from_guest_party_money(guests)
+    for guest in guests
+      guest.money -= calculate_group_fee_per_person(guests)
+    end
   end
 
 
