@@ -75,6 +75,10 @@ class Room
     return guest.money > @fee
   end
 
+  def individual_guest_make_payment(guest)
+    return @cash += @fee if individual_guest_can_afford_fee(guest) == true
+  end
+
 end
 
 

@@ -102,6 +102,11 @@ class RoomTest < MiniTest::Test
     assert_equal(true, @room_1.individual_guest_can_afford_fee(@guest_1))
   end
 
+  def test_if_individual_guest_has_made_payment
+    @room_1.add_guest_to_room(@guest_1)
+    assert_equal(10, @room_1.individual_guest_make_payment(@guest_1))
+  end
+
 end
 
 
