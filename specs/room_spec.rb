@@ -81,6 +81,21 @@ class RoomTest < MiniTest::Test
     assert_equal(false, @room_1.check_if_guest_can_afford_fee(@guest_4))
   end
 
+  def test_remove_guest_from_room
+    @room_1.add_multiple_guests_to_room(@guest_party_2)
+    @room_1.remove_guest_from_room
+    assert_equal(4, @room_1.guests_in_room)
+  end
+
+  def test_add_guest_by_name_to_room
+    @room_1.add_guest_to_room_by_name(@guest_party_2, @guest_5.name)
+    assert_equal(1, @room_1.guests_in_room)
+  end
+
+  # def test_remove_guest_by_name_from_room
+
+  # end
+
   # def test_guest_party_can_afford_fee
   #   assert_equal(true, @room_1.check_if_guest_party_can_afford_fee(@guest_party_1))
   # end

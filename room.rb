@@ -49,15 +49,21 @@ class Room
     return guest.money > @fee
   end
 
-  def check_if_guest_party_can_afford_fee(guests)
-    #iterate over guests array and sum their money
-    #if sum of their money is greater than or equal to number of guests in party * fee then can afford
+  # def check_if_guest_party_can_afford_fee(guests)
+  #   #iterate over guests array and sum their money
+  #   #if sum of their money is greater than or equal to number of guests in party * fee then can afford
+  # end
 
+  def remove_guest_from_room
+    return @guests.pop
+  end
 
+  def add_guest_to_room_by_name(guests, name)
+    match = guests.find { |guest| guest.name == name}
+    return @guests << match
   end
 
 end
-
 
 
 
