@@ -93,12 +93,14 @@ class RoomTest < MiniTest::Test
   end
 
   # def test_remove_guest_by_name_from_room
-
+  #   @room_1.add_guest_to_room(@guest_2)
+  #   @room_1.remove_guest_from_room_by_name(@guest_2)
+  #   assert_equal(0, @room_1)
   # end
 
-  # def test_guest_party_can_afford_fee
-  #   assert_equal(true, @room_1.check_if_guest_party_can_afford_fee(@guest_party_1))
-  # end
+  def test_if_individual_guest_can_afford_fee
+    assert_equal(true, @room_1.individual_guest_can_afford_fee(@guest_1))
+  end
 
 end
 

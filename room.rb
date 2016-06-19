@@ -1,3 +1,5 @@
+require('pry')
+
 class Room
 
   attr_reader(:name, :capacity, :fee)
@@ -34,7 +36,7 @@ class Room
   end
 
   def add_multiple_guests_to_room(guests)
-    return @guests.concat(guests) if (check_guest_party_against_capacity(guests) == true) && (available_spaces_in_room >= guests.count)
+    return @guests.concat(guests) if (check_guest_party_against_capacity(guests) == true) && (available_spaces_in_room >= guests.count)#put these into separate methods?
   end
 
   def add_song_to_room(song)
@@ -49,18 +51,28 @@ class Room
     return guest.money > @fee
   end
 
-  # def check_if_guest_party_can_afford_fee(guests)
-  #   #iterate over guests array and sum their money
-  #   #if sum of their money is greater than or equal to number of guests in party * fee then can afford
-  # end
-
   def remove_guest_from_room
     return @guests.pop
   end
 
   def add_guest_to_room_by_name(guests, name)
-    match = guests.find { |guest| guest.name == name}
+    match = guests.find { |guest| guest.name == name }
     return @guests << match
+  end
+
+  # def remove_guest_from_room_by_name(name)
+    # for guest in @guests
+    #   return guest.index if (guest.name == name)
+    # @guests.delete_at(index)
+    # break
+    # end
+  #   match = @guests.find { |guest| guest.name == name }
+  #   @guests.delete(match)
+  #   return @guests
+  # end
+
+  def individual_guest_can_afford_fee(guest)
+    return guest.money > @fee
   end
 
 end
