@@ -3,7 +3,7 @@ require('pry')
 class Room
 
   attr_reader(:name, :capacity, :individual_fee, :bar)
-  attr_accessor(:status, :cash)
+  attr_accessor(:cash)
 
   def initialize(name, capacity, individual_fee)
     @name = name
@@ -13,7 +13,7 @@ class Room
     @guests = []
     @songs = []
     @cash = 0
-    @bar = {beer: 3}
+    @bar = {beer: 3, wine: 5}
   end
 
   def guests_in_room()
@@ -137,7 +137,6 @@ class Room
     match << song_search
     return "Whooo" if (match.count == 1)
   end
-
 
 end
 
